@@ -1,0 +1,33 @@
+RPRIMEIRA FASE:
+
+	aluno - create, read, update, delete (guardar dados numa lista de objetos ou LocalStorage)
+	servidor Node.JS para fornecer as páginas
+	inserir dados através de formulários com validação
+
+	PAGINA INICIAL;
+		link: gestão turma
+		link: info turma
+		link: revisões
+		link: lista marcações revisões do dia
+
+	PAGINA DE GESTÃO:
+		nome/ano turma
+		lista disicplinas -> informar os alunos inscritos
+		lista alunos
+		apagar, adicionar, alterar disciplinas/alunos
+	
+	PAGINA DE INFO TURMA:
+		dados da turma
+		lista de alunos da turma
+		disciplinas da turma
+		ao clicar nas disciplinas, destacados aos alunos inscritos
+
+	PAGINA DE REVISÕES:
+		escolher disiplina para marcar revisão
+		aparecer no mapa da semana com as marcações de revisões (AJAX)
+	
+	PAGINA DE CREDITOS
+
+SEGUNDA FASE:
+
+	
