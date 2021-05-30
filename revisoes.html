@@ -1,43 +1,84 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
-    <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="icon" href="/images/icon.png">
-      <link rel="stylesheet" href="style.css">
-      <title>Projeto PW</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/icon.png">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobiscroll.javascript.min.css">
+    <link type="text/css" rel="stylesheet" href="daypilot/month_white.css?v=2018.2.232">
+	<link type="text/css" rel="stylesheet" href="daypilot/month_green.css?v=2018.2.232">    
+	<link type="text/css" rel="stylesheet" href="daypilot/month_transparent.css?v=2018.2.232">  
+	<link type="text/css" rel="stylesheet" href="daypilot/calendar_transparent.css?v=2018.2.232">    
+	<link type="text/css" rel="stylesheet" href="daypilot/calendar_white.css?v=2018.2.232">    
+	<link type="text/css" rel="stylesheet" href="daypilot/calendar_green.css?v=2018.2.232">    
+	<link type="text/css" rel="stylesheet" href="daypilot/navigator_green.css?v=2018.2.232">    
+	<link type="text/css" rel="stylesheet" href="daypilot/navigator_white.css?v=2018.2.232">
+    <script src="https://kit.fontawesome.com/8b73ef8676.js" crossorigin="anonymous"></script>
+    <script src="bootstrap/js/jquery-3.4.1.slim.min.js"></script>
+    <script src="bootstrap/js/popper.min.js"></script>
+    <script src="helpers/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="js/daypilot-all.min.js" type="text/javascript"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+    <style type="text/css"></style>
+    <title>Projeto PW</title>
+</head>
 <body>
-  <script src="javascript.js"></script>
-  <div class="topnav">
-    <a class="active" href="#home">Início</a>
-    <a href="gestao.html">Gestão</a>
-    <a href="info.html">Informação</a>
-    <a href="#revisoes">Revisões</a>
-  </div>
-  <h1>GESTÃO DE TURMAS</h1>
-  <table>
-    <tr>
-      <th>PÁGINA</th>
-      <th>LINK</th>
-    </tr>
-    <tr>
-      <td>Gestão da turma</td>
-      <td><a href="gestao.html">Gestão da turma</a></td>
-    </tr>
-    <tr>
-      <td>Informação da turma</td>
-      <td><a href="info.html">Informação da turma</a></td>
-    </tr>
-    <tr>
-      <td>Revisões</td>
-      <td><a href="revisoes.html">Revisões</a></td>
-    </tr>
-    <tr>
-      <td>Marcações de revisões</td>
-      <td><a href="marcacoes.html">Marcações de revisões</a></td>
-    </tr>
-  </table>
+    <script src="js/navbar.js"></script>
+    <div class="container">
+        <div class="row">
+            <div class="col-7 col-sm-7 col-md-9 col-vert-space center-title">
+                <span class="title-1">Revisões</span>
+            </div>
+            <div class="col-3 col-md-3 col-vert-space left-title">
+                <span class="title-1">Disciplinas</span>
+            </div>
+            <div class="col-7 col-sm-7 col-md-9">
+                <div id="tableRevisao" style="display: none;">
+                    <div mbsc-page class="demo-desktop-month-view">
+                        <div style="height:100%">
+                            <div id="demo-desktop-month-view"></div>
+                        </div>
+                    </div>
+                    <div id="dp"></div>
+                    <script type="text/javascript">
+                        var dp = new DayPilot.Calendar("dp");
+                        var currentTime = new Date();
+                        dp.startDate = currentTime;
+                        dp.viewType = "Week";
+                        var x;
+                        dp.onTimeRangeSelected = function (args) {
+                            var name = prompt("Nome do aluno:", "");
+                            var nota = prompt("Nova nota:", "");
+                            if(!name && !nota){return;}
+                            x = new DayPilot.Event({
+                                start: args.start,
+                                end: args.end,
+                                id: DayPilot.guid(),
+                                text: name + ":" + nota,
+                                nota: nota,
+                            });
+                            addRevisao(x);
+                            dp.events.add(x);
+                            dp.clearSelection();
+                        };
+                        dp.onEventClick = function(args){alert("clicked: " + args.e.id());};
+                        dp.init();
+                    </script>
+                    <script type="text/javascript">
+                        $(document).ready(function() {
+                            var url = window.location.href;
+                            var filename = url.substring(url.lastIndexOf('/')+1);
+                            if (filename === "") filename = "index.html";
+                            $(".menu a[href='" + filename + "']").addClass("selected");
+                        }); 
+                    </script>
+                </div>
+            </div>
+            <div class="col-3 col-sm-3 col-md-3" id="divDisci"></div>
+        </div>
+    </div>
 </body>
 </html>

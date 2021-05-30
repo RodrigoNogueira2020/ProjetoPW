@@ -1,131 +1,134 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
-    <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="icon" href="/images/icon.png">
-      <link rel="stylesheet" href="style.css">
-      <title>Projeto PW</title>
-    </head>
-<body>
-  <script src="javascript.js"></script>
-  <div class="topnav">
-    <a class="active" href="index.html">Início</a>
-    <a href="#gestao">Gestão</a>
-    <a href="info.html">Informação</a>
-    <a href="revisoes.html">Revisões</a>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/icon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/8b73ef8676.js" crossorigin="anonymous"></script>
+    <script src="bootstrap/js/jquery-3.4.1.slim.min.js"></script>
+    <script src="bootstrap/js/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+    <title>Projeto PW</title>
+  </head>
+<body onload="carregar();">
+  <script src="js/navbar.js"></script>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-vert-space text-center">
+        <span id="turmaDiv" class="title-1"></span>
+      </div>
+      <div class="col-7 col-sm-7 col-md-9 col-vert-space text-center">
+        <span class="title-1">Alunos</span>
+        <i class="fas fa-plus-square iconDisci" style="font-size: 110%; margin-left: 1%" data-toggle="modal" data-target="#myModal"></i>
+      </div>
+      <div class="col-3 col-md-3 col-vert-space text-center">
+        <span class="title-1">Disciplinas</span>
+        <i class="fas fa-plus-square iconDisci" style="font-size: 110%" data-toggle="modal" data-target="#disciplinasModal"></i>
+      </div>
+      <div id="divTable" class="col-7 col-sm-7 col-md-9"></div>
+      <div class="col-3 col-sm-3 col-md-3" id="divDisci"></div>
+    </div>
+    <div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-title-aluno">Adicionar aluno</h4>
+            <button type="button" onclick="limparAluno();" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body" id="formulario">
+            <form id="formData"> 
+              <div id="form-div">
+                <label for="nome" class="col-2 col-form-label">Nome</label>
+                <div id="input-text">
+                  <input class="form-control" type="text" id="nome">
+                </div>
+              </div>
+              <div id="form-div">
+                <label for="nome" class="col-2 col-form-label">Disciplina</label>
+                <div id="input-text">
+                  <select class="form-control" id="disciplinaDrop"></select>
+                </div>
+              </div>
+              <div id="form-div">
+                <label for="notaFinal" class="col-2 col-form-label">Nota</label>
+                <div id="input-text">
+                  <input class="form-control" type="number" id="notaFinal">
+                </div>
+              </div>
+              <div id="form-div">
+                <label for="dataNascimento" class="col-2 col-form-label">Data de nascimento</label>
+                <div class="col-10">
+                  <input class="form-control" type="date" id="dataNascimento">
+                </div>
+              </div>
+              <fieldset class="form-group">   
+                <div id="form-div">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optionsRadios" id="genero" value="Masculino">Masculino
+                  </label>
+                </div>
+                <div id="form-div">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optionsRadios" id="genero" value="Feminino">Feminino
+                  </label>
+                </div>
+              <div id="form-div">
+                <label for="email" class="col-2 col-form-label">E-mail</label>
+                <div class="col-10">
+                  <input class="form-control" type="email" id="email">
+                </div>
+              </div>
+            </fieldset>
+              <input class="form-control" type="number" value="" id="id" style="display: none;">
+              <a class="btn btn-primary" id="createButton" href="javascript: adicionarAluno();" role="button">Adicionar</a>&nbsp;
+              <a class="btn btn-primary" id="editButton" href="javascript: editarAluno();" role="button" style="display: none;">Editar</a>&nbsp;
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="disciplinasModal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-title-disci">Adicionar disciplina</h4>
+                <button type="button" onclick="clearDisciplina();" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body" id="formulario">
+                <form id="formData"> 
+                  <div id="form-div">
+                    <label for="nome" class="col-2 col-form-label">Nome</label>
+                    <div id="input-text">
+                      <input class="form-control" type="text" id="discNome">
+                    </div>
+                  </div>
+                  <div id="form-div">
+                    <label for="nome" class="col-2 col-form-label">Docente</label>
+                    <div id="input-text">
+                      <input class="form-control" type="text" id="discDocente">
+                    </div>
+                  </div>
+                  <input class="form-control" type="number" id="discId" style="display: none;">
+                  <a class="btn btn-primary" id="createButtonDisc" href="javascript: adicionarDisciplina()" role="button">Adicionar</a>&nbsp;
+                  <a class="btn btn-primary" id="editButtonDisc" href="javascript: editarDisciplina()" role="button" style="display: none;">Editar</a>&nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
   </div>
-  <h1>GESTÃO DE TURMAS</h1>
-  <!--<table>
-    <tr>
-      <td>
-        <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
-          <div>
-            <label>Nome completo</label>
-            <input type="text" name="fullName" id="fullName">
-          </div>
-          <div>
-            <label>Data de nascimento</label>
-            <input type="text" name="dataDeNascimento" id="dataDeNascimento">
-          </div>
-          <div>
-            <label>Género</label>
-            <input type="text" name="Genero" id="Genero">
-          </div>
-          <div>
-            <label>Email</label>
-            <input type="text" name="Email" id="Email">
-          </div>
-          <div class="form-action-buttons">
-            <input type="submit" value="Submit">
-          </div>
-        </form>
-      </td>
-      <td>
-        <table class="list" id="tabela">
-          <thead>
-            <tr>
-              <th>Nome completo</th>
-              <th>Data de nascimento</th>
-              <th>Género</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-
-          </tbody>
-        </table>
-      </td>
-    </tr>
-  </table>
-  <table id="link">
-    <tr>
-      <th>Nome</th>
-      <th>Ano</th>
-      <th>Disciplinas</th>
-      <th>Alunos</th>
-    </tr>
-    <tr>
-      <td>Gestão da turma</td>
-      <td><a href="gestao.html">Gestão da turma</a></td>
-    </tr>
-    <tr>
-      <td>Informação da turma</td>
-      <td><a href="info.html">Informação da turma</a></td>
-    </tr>
-    <tr>
-      <td>Revisões</td>
-      <td><a href="revisoes.html">Revisões</a></td>
-    </tr>
-    <tr>
-      <td>Marcações de revisões</td>
-      <td><a href="marcacoes.html">Marcações de revisões</a></td>
-    </tr>
-  </table>-->
-  <table>
-    <tr>
-        <td>
-            <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
-                <div>
-                    <label>Full Name</label><label class="validation-error hide" id="fullNameValidationError">This field is required.</label>
-                    <input type="text" name="fullName" id="fullName">
-                </div>
-                <div>
-                    <label>Data de nascimento</label>
-                    <input type="text" name="dataDeNascimento" id="dataDeNascimento">
-                </div>
-                <div>
-                    <label>Género</label>
-                    <input type="text" name="Genero" id="Genero">
-                </div>
-                <div>
-                    <label>E-mail</label>
-                    <input type="text" name="Email" id="Email">
-                </div>
-                <div  class="form-action-buttons">
-                    <input type="submit" value="Submit">
-                </div>
-            </form>
-        </td>
-        <td>
-            <table class="list" id="employeeList">
-                <thead>
-                    <tr>
-                        <th>Full Name</th>
-                        <th>EMP Code</th>
-                        <th>Salary</th>
-                        <th>City</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                </tbody>
-            </table>
-        </td>
-    </tr>
-</table>
-<script src="script.js"></script>
+  <script>
+    $(document).ready(function(){
+      $("#nome").keydown(function(event){
+        var inputValue = event.which;
+        if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0 && inputValue != 8 && inputValue != 192)){event.preventDefault();}
+      });
+      $("#discDocente").keydown(function(event){
+        var inputValue = event.which;
+        if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0 && inputValue != 8 && inputValue != 192)){event.preventDefault();}
+      });
+    });
+  </script>
 </body>
 </html>

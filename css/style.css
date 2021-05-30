@@ -1,0 +1,153 @@
+body {
+  margin: 0;
+  font-family: Garamond, serif;
+}
+
+.navbar-ul {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: black;
+}
+
+.navbar-li{float: left;}
+
+li a {
+  display: block;
+  text-align: center;
+  padding: 15px 15px;
+  color: white;
+}
+
+li a:hover:not(.active){background-color: black;}
+
+.active{background-color: #04AA6D;}
+
+#links {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#links td, #links th{
+  border: 1px solid rgb(56, 54, 54);
+  padding: 10px;
+}
+
+#links tr:nth-child(even){background-color: white;}
+
+#links tr:hover{background-color: white;}
+
+#links th {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+.creditos-name{
+  margin-top: 2%;
+  font-size: 150%;
+  font-weight: bold;
+  color: black;
+}
+
+.list-item-1{
+  font-size: 150%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  transition: ease-in-out 300ms;
+}
+
+.list-item-info:hover{
+  color: #04AA6D;
+  cursor: pointer;
+}
+
+.iconDisci{
+  font-size: 100%;
+  margin-left: 5%;
+  transition: ease-in-out 300ms;
+}
+
+.iconDisci:hover{
+  color: #04AA6D;
+  cursor: pointer;
+}
+
+.divider-custom {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2%;
+}
+
+.divider-custom .divider-custom-line { 
+  width: 100%;
+  max-width: 50rem;
+  height: 0.30rem;
+  border-radius: 1rem;
+  background-color: black;
+  border-color: black;
+}
+
+.divider-custom .divider-custom-line:first-child {margin-right: .50rem;}
+
+.divider-custom .divider-custom-line:last-child {margin-left: .50rem;}
+
+.divider-custom .divider-custom-icon {
+  color: #04AA6D;
+  font-size: 1.5rem;
+}
+
+.bg-dark, .dropdown-item, .dropdown-menu{background-color: black;}
+
+.table-hover tbody tr:hover {
+  background-color: #ffffff;
+  transition: ease-in-out 300ms;
+}
+
+.table-dark,
+.table-dark > td,
+.table-dark > th {background-color: black;}
+
+.img-fluid {
+  width: 550px;
+  height: 350px;
+}
+
+.col-vert-space{
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.title-1{
+  font-size: 200%;
+  font-weight: bold;
+  margin-left: 5%;
+}
+
+.title-creditos{
+  margin-top: 10%;
+  margin-bottom: 1%;
+  font-size: 220%;
+  font-weight: bold;
+  color: black;
+}
+
+.input-text{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#form-div {
+  border-radius: 5px;
+  background-color: rgb(245, 244, 244);
+  padding: 15px;
+}
