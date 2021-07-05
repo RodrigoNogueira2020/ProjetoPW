@@ -44,36 +44,6 @@
                     </div>
                     <div id="dp"></div>
                     <script type="text/javascript">
-                        var dp = new DayPilot.Calendar("dp");
-                        var currentTime = new Date();
-                        dp.startDate = currentTime;
-                        dp.viewType = "Week";
-                        var x;
-                        dp.onTimeRangeSelected = function (args) {
-                            var name = prompt("Nome do aluno:", "");
-                            var nota = prompt("Nova nota:", "");
-                            if(!name && !nota){return;}
-                            x = new DayPilot.Event({
-                                start: args.start,
-                                end: args.end,
-                                id: DayPilot.guid(),
-                                text: name + ":" + nota,
-                                nota: nota,
-                            });
-                            addRevisao(x);
-                            dp.events.add(x);
-                            dp.clearSelection();
-                        };
-                        dp.onEventClick = function(args){alert("clicked: " + args.e.id());};
-                        dp.init();
-                    </script>
-                    <script type="text/javascript">
-                        $(document).ready(function() {
-                            var url = window.location.href;
-                            var filename = url.substring(url.lastIndexOf('/')+1);
-                            if (filename === "") filename = "index.html";
-                            $(".menu a[href='" + filename + "']").addClass("selected");
-                        }); 
                     </script>
                 </div>
             </div>
