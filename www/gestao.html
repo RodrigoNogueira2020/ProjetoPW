@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/icon.png">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/8b73ef8676.js" crossorigin="anonymous"></script>
     <script src="bootstrap/js/jquery-3.4.1.slim.min.js"></script>
     <script src="bootstrap/js/popper.min.js"></script>
@@ -13,7 +13,7 @@
     <script src="js/script.js"></script>
     <title>Projeto PW</title>
   </head>
-<body onload="carregar();">
+<body>
   <script src="js/navbar.js"></script>
   <div class="container">
     <div class="row">
@@ -36,7 +36,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title" id="modal-title-aluno">Adicionar aluno</h4>
-            <button type="button" onclick="limparAluno();" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" onclick="criarAluno()" class="close" data-dismiss="modal">&times;</button>
           </div>
           <div class="modal-body" id="formulario">
             <form id="formData"> 
@@ -111,7 +111,7 @@
                     </div>
                   </div>
                   <input class="form-control" type="number" id="discId" style="display: none;">
-                  <a class="btn btn-primary" id="createButtonDisc" href="javascript: adicionarDisciplina()" role="button">Adicionar</a>&nbsp;
+                  <a class="btn btn-primary" id="createButtonDisc" href="javascript: criarAluno()" role="button">Adicionar</a>&nbsp;
                   <a class="btn btn-primary" id="editButtonDisc" href="javascript: editarDisciplina()" role="button" style="display: none;">Editar</a>&nbsp;
                 </div>
             </div>
